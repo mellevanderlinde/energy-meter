@@ -20,7 +20,7 @@ Go to the created [IAM user](https://us-east-1.console.aws.amazon.com/iam/home?r
 
 Run this on the Raspberry Pi.
 
-#### Clone Repository
+#### 2.1 Clone Repository
 
 ```
 cd ~
@@ -30,7 +30,7 @@ git clone git@github.com:mellevanderlinde/energy-meter.git
 cd energy-meter
 ```
 
-#### Set AWS Credentials
+#### 2.2 Set AWS Credentials
 
 ```
 cd apps/meter
@@ -40,7 +40,7 @@ nano .env
 
 Use the editor to fill `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the values that belong to the AWS IAM user that was created in step 1.
 
-#### Create Service
+#### 2.3 Create Service
 
 Create a service that always runs in the background (also after a reboot), as described on [this page](https://www.tomshardware.com/how-to/run-long-running-scripts-raspberry-pi).
 
