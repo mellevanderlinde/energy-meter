@@ -20,7 +20,7 @@ Go to the created [IAM user](https://us-east-1.console.aws.amazon.com/iam/home?r
 
 Run this on the Raspberry Pi.
 
-#### Clone Project
+#### Clone Repository
 
 ```
 cd ~
