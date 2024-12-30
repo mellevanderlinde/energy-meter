@@ -1,0 +1,11 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {},
+    "lint": {},
+    "start": {},
+    "test": {},
+    "test:update": {}
+  }
+}
