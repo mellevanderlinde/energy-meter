@@ -76,3 +76,12 @@ Verify that the service is running. This shows potential failures.
 ```
 sudo systemctl status energy-meter
 ```
+
+## Monitor Energy Usage
+
+The webpage can be used to monitor energy usage. This requires AWS credentials to read from DynamoDB.
+
+```
+pnpm install
+pnpm dev
+```
