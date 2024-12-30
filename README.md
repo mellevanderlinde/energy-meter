@@ -1,4 +1,4 @@
-# Energy Data on AWS using P1 Port and Raspberry Pi
+# Energy Data on AWS with Raspberry Pi
 
 This repository creates a service on a Raspberry Pi to store home energy data on AWS DynamoDB by reading the [P1 port](https://nl.wikipedia.org/wiki/P1-poort).
 
