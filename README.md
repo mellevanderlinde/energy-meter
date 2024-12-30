@@ -1,6 +1,6 @@
 # Energy Data on AWS with Raspberry Pi
 
-This repository creates a service on a Raspberry Pi to store home energy data on AWS DynamoDB by reading the [P1 port](https://nl.wikipedia.org/wiki/P1-poort). This port sends data approximately every 10 seconds, but the data is saved every 5 minutes.
+This repository creates a service on a Raspberry Pi to store home energy usage data on AWS DynamoDB by reading the [P1 port](https://nl.wikipedia.org/wiki/P1-poort). This port sends data approximately every 10 seconds, but the data is saved every 5 minutes.
 
 ## Setup
 
