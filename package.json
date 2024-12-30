@@ -2,7 +2,7 @@
   "scripts": {
     "ci": "turbo build lint test",
     "dev": "cd apps/ui && pnpm dev",
-    "start": "turbo start",
+    "start": "cd apps/meter && pnpm start",
     "test:update": "turbo test:update"
   },
   "dependencies": {
