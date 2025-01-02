@@ -3,17 +3,16 @@
   "scripts": {
     "build": "tsc --build --clean",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.716.0",
     "@aws-sdk/util-dynamodb": "^3.716.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
     "eslint-config": "workspace:*",
-    "jest": "^29.7.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   }
 }

@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeAll, vi } from "vitest";
 import { SerialPortAdapter } from "./serial-port-adapter";
 
 describe("SerialPortAdapter", () => {
@@ -6,7 +7,7 @@ describe("SerialPortAdapter", () => {
 
   beforeAll(() => {
     adapter = new SerialPortAdapter("/dev/ttyUSBMock", {
-      pipe: jest.fn(),
+      pipe: vi.fn(),
     } as never);
     regex = adapter["regex"];
   });

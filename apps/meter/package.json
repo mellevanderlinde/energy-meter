@@ -4,16 +4,14 @@
     "build": "tsc",
     "lint": "eslint .",
     "start": "pnpm install && pnpm build && node src/index.js",
-    "test": "jest"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
     "eslint-config": "workspace:*",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.716.0",

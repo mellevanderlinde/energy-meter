@@ -1,3 +1,4 @@
+import { it, expect } from "vitest";
 import { App } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import { EnergyMeterStack } from "../lib/energy-meter-stack";

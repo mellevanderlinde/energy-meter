@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { StoragePort } from "../ports/storage-port";
 import { DataProcessor } from "./data-processor";
 
@@ -6,19 +7,19 @@ describe("processData", () => {
   let processor: DataProcessor;
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
-    storagePort = { save: jest.fn() } as StoragePort;
+    storagePort = { save: vi.fn() } as StoragePort;
     processor = new DataProcessor(storagePort);
   });
 
   it("should save data starting from the second 5-minute cycle", () => {
     processor.processData("001000.000", "kwh1");
     processor.processData("002000.000", "kwh2");
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("001000.001", "kwh1");
     processor.processData("002000.000", "kwh2");
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("001000.003", "kwh1");
     processor.processData("002000.000", "kwh2");
     expect(storagePort.save).toHaveBeenCalledTimes(1);
@@ -29,7 +30,7 @@ describe("processData", () => {
     );
     expect(processor["lastSavedTime"]).toBe(Date.now());
     expect(processor["lastSavedKwh"]).toBe(3000.003);
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("001000.010", "kwh1");
     processor.processData("002000.000", "kwh2");
     expect(storagePort.save).toHaveBeenCalledTimes(2);
@@ -47,7 +48,7 @@ describe("processData", () => {
     processor.processData("001000.000", "kwh1");
     processor.processData("002000.000", "kwh2");
     expect(processor["firstSave"]).toBe(true);
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     expect(processor["firstSave"]).toBe(true);
     processor.processData("001000.001", "kwh1");
     expect(processor["firstSave"]).toBe(false);
@@ -70,7 +71,7 @@ describe("processData", () => {
     processor.processData("00400.500", "kwh1");
     processor.processData("01000.500", "kwh2");
     expect(processor["lastSavedKwh"]).toBe(0);
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("00500.000", "kwh1");
     processor.processData("01000.500", "kwh2");
     expect(processor["lastSavedKwh"]).toBe(1500.5);
@@ -80,13 +81,13 @@ describe("processData", () => {
     processor.processData("001000.000", "kwh1");
     processor.processData("002000.000", "kwh2");
     expect(processor["lastSavedKwh"]).toBe(0);
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("001000.002", "kwh1");
     processor.processData("002000.000", "kwh2");
     processor.processData("001000.020", "kwh1");
     expect(processor["lastSavedKwh"]).toBe(3000.002);
     expect(storagePort.save).toHaveBeenCalledTimes(0);
-    jest.advanceTimersByTime(5 * 60 * 1000);
+    vi.advanceTimersByTime(5 * 60 * 1000);
     processor.processData("001001.000", "kwh1");
     processor.processData("002000.000", "kwh2");
     expect(processor["lastSavedKwh"]).toBe(3001);
