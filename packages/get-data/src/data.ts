@@ -9,14 +9,14 @@ import { getMockData } from "./data.mock";
 
 const client = new DynamoDBClient({ region: "eu-west-1" });
 
-export async function getData(
-  numberOfDays: number,
-  useMockData: boolean = false,
-): Promise<GetDataOutput> {
+export async function getData(numberOfDays: number): Promise<GetDataOutput> {
   const data: GetDataOutput = [];
   const dates = getDates(numberOfDays);
 
-  if (useMockData) return getMockData(numberOfDays, data);
+  if (process.env.MOCK_DATA === "true") {
+    console.log("Using mock data");
+    return getMockData(numberOfDays, data);
+  }
 
   await Promise.all(
     dates.map(async (date) => {

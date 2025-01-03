@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, ReactNode } from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { getData, GetDataOutput } from "get-data";
 import {
@@ -31,7 +31,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function Component() {
+export default function Component(): ReactNode {
   const [numberOfDays, setNumberOfDays] = useState("14");
   const [data, setData] = useState<GetDataOutput>([]);
 
