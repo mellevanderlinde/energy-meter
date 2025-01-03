@@ -79,9 +79,12 @@ sudo systemctl status energy-meter
 
 ## Monitor
 
-The webpage can be used to monitor energy usage. This requires AWS credentials to read from DynamoDB.
+The webpage can be used to monitor energy usage. This requires AWS credentials to read from DynamoDB, unless `MOCK_DATA=true` is specified.
 
 ```
 pnpm install
 pnpm dev
+
+# use mock data
+MOCK_DATA=true pnpm dev
 ```
