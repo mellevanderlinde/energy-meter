@@ -3,7 +3,7 @@
   "scripts": {
     "build": "next build",
     "dev": "open http://localhost:3000/ && next dev --turbopack",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "vitest run",
     "test:update": "vitest run -u"
   },
