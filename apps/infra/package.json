@@ -4,7 +4,6 @@
     "energy-meter": "bin/energy-meter.js"
   },
   "scripts": {
-    "build": "tsc --build --clean",
     "lint": "eslint .",
     "test": "vitest run",
     "test:update": "vitest run -u"
