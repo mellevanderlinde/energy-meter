@@ -2,7 +2,7 @@
   "scripts": {
     "ci": "turbo build lint test docker",
     "dev": "turbo dev",
-    "docker": "docker-compose build",
+    "docker": "docker compose build",
     "start": "turbo start --ui stream",
     "test:update": "turbo test:update"
   },
