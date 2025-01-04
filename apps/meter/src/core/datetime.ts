@@ -14,5 +14,6 @@ export function getDateTime(): GetDateTimeOutput {
 }
 
 export function timeToSave(lastSavedTime: number): boolean {
+  console.log("Time:", new Date().toTimeString().slice(0, 8));
   return Date.now() - lastSavedTime >= 5 * 60 * 1000;
 }
