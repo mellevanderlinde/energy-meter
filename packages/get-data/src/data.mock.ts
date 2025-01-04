@@ -7,11 +7,11 @@ export async function getMockData(
 ): Promise<GetDataOutput> {
   const now = new Date();
 
-  for (let i = 0; i < numberOfDays; i++) {
-    for (let j = 0; j < 24; j += 6) {
+  for (let day = 0; day < numberOfDays; day++) {
+    for (let hour = 0; hour < 24; hour += 6) {
       const date = new Date(now);
-      date.setDate(now.getDate() - i);
-      date.setHours(j, 0, 0, 0);
+      date.setDate(now.getDate() - day);
+      date.setHours(hour, 0, 0, 0);
 
       const datetime = date.toISOString().split(".")[0].replace("Z", "");
 
