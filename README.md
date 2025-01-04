@@ -33,48 +33,19 @@ cd energy-meter
 #### 2.2 Set AWS Credentials
 
 ```
-cd apps/meter
-cp .env.template .env
-nano .env
+cp apps/meter/.env.template apps/meter/.env
+nano apps/meter/.env
 ```
 
 Use the editor to fill `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the values that belong to the AWS IAM user that was created in step 1.
 
-#### 2.3 Create Service
+#### 2.3 Start Docker Service
 
-Create a service that always runs in the background (also after a reboot), as described on [this page](https://www.tomshardware.com/how-to/run-long-running-scripts-raspberry-pi).
-
-```
-sudo touch /etc/systemd/system/energy-meter.service
-sudo nano /etc/systemd/system/energy-meter.service
-```
-
-Insert the following and save the file (be sure to replace `<user>` with the username of the Raspberry Pi).
+Create a service that always runs in the background. The service is restarted after a reboot.
 
 ```
-[Unit]
-Description=Energy Meter Service
-After=multi-user.target
-
-[Service]
-Type=idle
-ExecStart=/usr/bin/npm run start --prefix /home/<user>/Projects/energy-meter
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Start and enable the service, so it always runs in the background.
-
-```
-sudo systemctl start energy-meter
-sudo systemctl enable energy-meter
-```
-
-Verify that the service is running. This shows potential failures.
-
-```
-sudo systemctl status energy-meter
+docker compose build
+docker compose up --detach
 ```
 
 ## Monitor
