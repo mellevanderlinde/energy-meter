@@ -16,7 +16,6 @@ export class DataProcessor {
   }
 
   public processData(value: string, metric: Metric): void {
-    console.log(`Processing data: ${value} ${metric}`);
     this.updateKwhValues(value, metric);
     if (timeToSave(this.lastSavedTime)) this.saveData();
   }
@@ -28,13 +27,11 @@ export class DataProcessor {
   }
 
   private saveData(): void {
-    console.log("Saving data");
     if (!this.firstSave) {
       const usedKwh = parseFloat(
         (this.totalKwh - this.lastSavedKwh).toFixed(3),
       );
       const { date, time } = getDateTime();
-      console.log(`Saving ${usedKwh} kwh at ${date} ${time}`);
       this.storagePort.save(date, time, usedKwh);
     }
 
