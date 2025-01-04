@@ -1,0 +1,7 @@
+services:
+  meter:
+    build:
+      context: .
+      dockerfile: apps/meter/Dockerfile
+    image: energy-meter
+    restart: always

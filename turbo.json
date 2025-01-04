@@ -3,7 +3,17 @@
   "ui": "tui",
   "tasks": {
     "build": {},
+    "dev": {
+      "passThroughEnv": ["MOCK_DATA"],
+      "cache": false,
+      "persistent": true
+    },
+    "//#docker": {},
     "lint": {},
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
     "test": {},
     "test:update": {}
   }

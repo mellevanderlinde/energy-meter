@@ -3,19 +3,18 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
-    "start": "pnpm install && pnpm build && node src/index.js",
+    "start": "node src/index.js",
     "test": "vitest run"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
     "eslint-config": "workspace:*",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.721.0",
+    "@types/node": "^22.10.5",
     "dotenv": "^16.4.7",
-    "serialport": "^13.0.0"
+    "serialport": "^13.0.0",
+    "typescript": "^5.7.2"
   }
 }
