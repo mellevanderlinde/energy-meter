@@ -12,8 +12,7 @@ COPY . .
 RUN pnpm install --filter meter --prod
 
 FROM base AS runner
-COPY --from=builder /app/apps/meter/src ./apps/meter/src
-COPY --from=builder /app/apps/meter/.env ./apps/meter/.env
+COPY --from=builder /app/apps/meter ./apps/meter
 COPY --from=installer /app/node_modules ./node_modules
 COPY --from=installer /app/apps/meter/node_modules ./apps/meter/node_modules
 WORKDIR /app/apps/meter
