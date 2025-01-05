@@ -23,9 +23,7 @@ Run this on the Raspberry Pi.
 #### 2.1 Clone Repository
 
 ```
-cd ~
-mkdir Projects
-cd Projects
+cd ~ && mkdir Projects && cd Projects
 git clone https://github.com/mellevanderlinde/energy-meter.git
 cd energy-meter
 ```
