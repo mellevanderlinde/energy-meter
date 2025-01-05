@@ -44,8 +44,7 @@ Use the editor to fill `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the 
 Create a service that always runs in the background. The service is restarted after a reboot.
 
 ```
-docker compose build
-docker compose up --detach
+docker compose up --build --detach
 ```
 
 ## Monitor
