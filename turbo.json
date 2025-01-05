@@ -10,10 +10,6 @@
     },
     "//#docker": {},
     "lint": {},
-    "start": {
-      "cache": false,
-      "persistent": true
-    },
     "test": {},
     "test:update": {}
   }

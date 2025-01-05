@@ -1,21 +1,21 @@
 FROM node:23-alpine AS base
-
 RUN corepack enable
+WORKDIR /app
 
 FROM base AS builder
-WORKDIR /app
 COPY . .
-RUN npx turbo prune meter --docker
+RUN pnpm install --filter meter
+RUN npx turbo build --filter meter
 
 FROM base AS installer
-WORKDIR /app
-COPY --from=builder /app/out/json/ .
-RUN pnpm install --prod
-COPY --from=builder /app/out/full/ .
-RUN npx turbo build
+COPY . .
+RUN pnpm install --filter meter --prod
 
 FROM base AS runner
-WORKDIR /app
-COPY --from=installer /app .
+COPY --from=builder /app/apps/meter/src ./apps/meter/src
+COPY --from=builder /app/apps/meter/.env ./apps/meter/.env
+COPY --from=installer /app/node_modules ./node_modules
+COPY --from=installer /app/apps/meter/node_modules ./apps/meter/node_modules
+WORKDIR /app/apps/meter
 
-CMD ["pnpm", "start"]
+CMD ["node", "src/index.js"]
