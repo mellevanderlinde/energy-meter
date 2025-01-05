@@ -1,0 +1,9 @@
+services:
+  meter:
+    build:
+      context: .
+      dockerfile: apps/meter/Dockerfile
+    image: energy-meter
+    restart: always
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
