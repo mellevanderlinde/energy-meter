@@ -24,9 +24,9 @@ Run this on the Raspberry Pi.
 
 ```
 cd ~
-touch Projects
+mkdir Projects
 cd Projects
-git clone git@github.com:mellevanderlinde/energy-meter.git
+git clone https://github.com/mellevanderlinde/energy-meter.git
 cd energy-meter
 ```
 
