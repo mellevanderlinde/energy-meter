@@ -39,7 +39,7 @@ Use the editor to fill `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` with the 
 
 #### 2.3 Start Docker Service
 
-Create a service that always runs in the background. The service is restarted after a reboot.
+Create a service that always runs in the background. The service restarts after a reboot.
 
 ```
 docker compose up --build --detach
