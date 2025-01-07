@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import Chart from "../components/chart";
 
 export default function Home(): ReactNode {

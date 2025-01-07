@@ -1,5 +1,5 @@
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
-import { StoragePort } from "../ports/storage-port";
+import type { StoragePort } from "../ports/storage-port";
 import "dotenv/config";
 
 export class DynamodbAdapter implements StoragePort {

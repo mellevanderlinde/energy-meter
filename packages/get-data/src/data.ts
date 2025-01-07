@@ -2,10 +2,10 @@
 
 import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
+import { getMockData } from "./data.mock";
 import { getDates } from "./dates";
 import { sortData } from "./sort";
-import { GetDataOutput } from "./types";
-import { getMockData } from "./data.mock";
+import type { GetDataOutput } from "./types";
 
 const client = new DynamoDBClient({ region: "eu-west-1" });
 
@@ -37,9 +37,9 @@ export async function getData(numberOfDays: number): Promise<GetDataOutput> {
         throw new Error("Pagination is currently not implemented");
       }
 
-      Items?.forEach((item) => {
+      for (const item of Items || []) {
         data.push(unmarshall(item));
-      });
+      }
     }),
   );
 

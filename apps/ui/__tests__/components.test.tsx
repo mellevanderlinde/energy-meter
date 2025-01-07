@@ -1,8 +1,8 @@
-import { test, expect, vi, describe, beforeAll } from "vitest";
-import { render } from "@testing-library/react";
-import { ThemeProvider } from "@/components/theme-provider";
-import Chart from "@/components/chart";
 import Home from "@/app/page";
+import Chart from "@/components/chart";
+import { ThemeProvider } from "@/components/theme-provider";
+import { render } from "@testing-library/react";
+import { beforeAll, describe, expect, test, vi } from "vitest";
 
 describe("Components", () => {
   beforeAll(() => {

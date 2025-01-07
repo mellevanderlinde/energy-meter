@@ -8,7 +8,7 @@
       "persistent": true
     },
     "//#docker": {},
-    "lint": {},
+    "//#lint": {},
     "test": {},
     "test:update": {}
   }

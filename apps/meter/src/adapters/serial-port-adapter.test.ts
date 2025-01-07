@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { SerialPortAdapter } from "./serial-port-adapter";
 
 describe("SerialPortAdapter", () => {
@@ -9,6 +9,7 @@ describe("SerialPortAdapter", () => {
     adapter = new SerialPortAdapter("/dev/ttyUSBMock", {
       pipe: vi.fn(),
     } as never);
+    // biome-ignore lint/complexity/useLiteralKeys: property is private
     regex = adapter["regex"];
   });
 

@@ -1,7 +1,6 @@
 {
   "name": "get-data",
   "scripts": {
-    "lint": "eslint .",
     "test": "vitest run"
   },
   "dependencies": {
@@ -9,7 +8,6 @@
     "@aws-sdk/util-dynamodb": "^3.721.0"
   },
   "devDependencies": {
-    "eslint-config": "workspace:*",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"

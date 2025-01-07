@@ -1,4 +1,4 @@
-import { it, expect } from "vitest";
+import { expect, it } from "vitest";
 import { getDates } from "./dates";
 
 it("should return an array of dates", () => {

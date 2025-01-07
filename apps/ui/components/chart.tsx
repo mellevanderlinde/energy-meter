@@ -1,8 +1,5 @@
 "use client";
 
-import { useState, useEffect, useMemo, ReactNode } from "react";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { getData, GetDataOutput } from "get-data";
 import {
   Card,
   CardContent,
@@ -11,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -23,6 +20,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { type GetDataOutput, getData } from "get-data";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const chartConfig = {
   kwh: {
@@ -37,7 +37,7 @@ export default function Component(): ReactNode {
 
   useEffect(() => {
     async function loadData() {
-      const result = await getData(parseFloat(numberOfDays));
+      const result = await getData(Number.parseFloat(numberOfDays));
       setData(result);
     }
     loadData();
@@ -45,13 +45,13 @@ export default function Component(): ReactNode {
 
   const sumPerDay = useMemo(() => {
     const result: { [key: string]: number } = {};
-    data.forEach((entry) => {
+    for (const entry of data) {
       const date = new Date(entry.datetime).toLocaleDateString("en-US");
       if (!result[date]) {
         result[date] = 0;
       }
       result[date] += entry.kwh;
-    });
+    }
     return Object.entries(result).map(([date, kwh]) => ({ date, kwh }));
   }, [data]);
 

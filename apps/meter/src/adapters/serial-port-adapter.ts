@@ -1,6 +1,6 @@
-import { MeterReaderPort } from "../ports/meter-reader-port";
-import { Metric } from "../types";
 import { ReadlineParser, SerialPort } from "serialport";
+import type { MeterReaderPort } from "../ports/meter-reader-port";
+import type { Metric } from "../types";
 
 export class SerialPortAdapter implements MeterReaderPort {
   private port: SerialPort;
@@ -17,8 +17,8 @@ export class SerialPortAdapter implements MeterReaderPort {
     handler: (value: string, metric: Metric) => void,
   ): void {
     this.parser.on("data", (data: string) => {
-      let match;
-      if ((match = this.regex.exec(data))) {
+      const match = this.regex.exec(data);
+      if (match) {
         const metric = match[1] === "1" ? "kwh1" : "kwh2";
         handler(match[2], metric);
       }

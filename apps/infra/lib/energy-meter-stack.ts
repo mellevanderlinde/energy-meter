@@ -1,11 +1,11 @@
-import { Duration, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
+import { Duration, RemovalPolicy, Stack, type StackProps } from "aws-cdk-lib";
 import { ComparisonOperator } from "aws-cdk-lib/aws-cloudwatch";
 import { SnsAction } from "aws-cdk-lib/aws-cloudwatch-actions";
-import { Table, BillingMode, AttributeType } from "aws-cdk-lib/aws-dynamodb";
-import { User, PolicyStatement } from "aws-cdk-lib/aws-iam";
+import { AttributeType, BillingMode, Table } from "aws-cdk-lib/aws-dynamodb";
+import { PolicyStatement, User } from "aws-cdk-lib/aws-iam";
 import { Topic } from "aws-cdk-lib/aws-sns";
 import { EmailSubscription } from "aws-cdk-lib/aws-sns-subscriptions";
-import { Construct } from "constructs";
+import type { Construct } from "constructs";
 
 interface EnergyMeterStackProps extends StackProps {
   email: string;

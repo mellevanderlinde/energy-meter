@@ -1,5 +1,5 @@
 import { sortData } from "./sort";
-import { GetDataOutput } from "./types";
+import type { GetDataOutput } from "./types";
 
 export async function getMockData(
   numberOfDays: number,
@@ -19,7 +19,7 @@ export async function getMockData(
         date: date.toISOString().split("T")[0],
         time: date.toTimeString().split(" ")[0],
         datetime,
-        kwh: parseFloat(Math.random().toFixed(3)),
+        kwh: Number.parseFloat(Math.random().toFixed(3)),
       });
     }
   }

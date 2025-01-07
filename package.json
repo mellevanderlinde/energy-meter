@@ -3,9 +3,11 @@
     "ci": "turbo build lint test docker",
     "dev": "turbo dev --env-mode=loose",
     "docker": "docker compose build",
+    "lint": "biome check",
     "test:update": "turbo test:update"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "turbo": "^2.3.3"
   },
   "packageManager": "pnpm@9.15.3"
