@@ -1,6 +1,7 @@
 {
   "name": "get-data",
   "scripts": {
+    "build": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
