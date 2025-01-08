@@ -1,9 +1,9 @@
 import { expect, it } from "vitest";
 import { getDates } from "./dates";
 
-it("should return an array of dates", () => {
-  const pattern: RegExp = /\d{4}-\d{2}-\d{2}/;
+const pattern: RegExp = /\d{4}-\d{2}-\d{2}/;
 
+it("should return an array of dates", () => {
   let dates = getDates(1);
   expect(dates[0]).toMatch(pattern);
   expect(dates[1]).toBeUndefined();

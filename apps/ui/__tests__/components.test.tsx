@@ -1,5 +1,5 @@
 import Home from "@/app/page";
-import Chart from "@/components/chart";
+import { Chart } from "@/components/chart";
 import { ThemeProvider } from "@/components/theme-provider";
 import { render } from "@testing-library/react";
 import { beforeAll, describe, expect, test, vi } from "vitest";

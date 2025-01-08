@@ -1,10 +1,10 @@
 import { sortData } from "./sort";
 import type { GetDataOutput } from "./types";
 
-export async function getMockData(
+export function getMockData(
   numberOfDays: number,
   data: GetDataOutput,
-): Promise<GetDataOutput> {
+): GetDataOutput {
   const now = new Date();
 
   for (let day = 0; day < numberOfDays; day++) {

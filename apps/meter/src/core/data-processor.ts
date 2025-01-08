@@ -17,12 +17,18 @@ export class DataProcessor {
 
   public processData(value: string, metric: Metric): void {
     this.updateKwhValues(value, metric);
-    if (timeToSave(this.lastSavedTime)) this.saveData();
+    if (timeToSave(this.lastSavedTime)) {
+      this.saveData();
+    }
   }
 
   private updateKwhValues(value: string, metric: Metric): void {
-    if (metric === "kwh1") this.kwh1 = Number.parseFloat(value);
-    if (metric === "kwh2") this.kwh2 = Number.parseFloat(value);
+    if (metric === "kwh1") {
+      this.kwh1 = Number.parseFloat(value);
+    }
+    if (metric === "kwh2") {
+      this.kwh2 = Number.parseFloat(value);
+    }
     this.totalKwh = this.kwh1 + this.kwh2;
   }
 

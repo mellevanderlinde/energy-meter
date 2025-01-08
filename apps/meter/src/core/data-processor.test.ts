@@ -24,7 +24,9 @@ describe("processData", () => {
     processor.processData("002000.000", "kwh2");
     expect(storagePort.save).toHaveBeenCalledTimes(1);
     expect(storagePort.save).toHaveBeenCalledWith(
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{4}-\d{2}-\d{2}/),
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{2}:\d{2}:\d{2}/),
       0.002,
     );
@@ -37,7 +39,9 @@ describe("processData", () => {
     processor.processData("002000.000", "kwh2");
     expect(storagePort.save).toHaveBeenCalledTimes(2);
     expect(storagePort.save).toHaveBeenCalledWith(
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{4}-\d{2}-\d{2}/),
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{2}:\d{2}:\d{2}/),
       0.007,
     );
@@ -112,7 +116,9 @@ describe("processData", () => {
     expect(processor["lastSavedKwh"]).toBe(3001);
     expect(storagePort.save).toHaveBeenCalledTimes(1);
     expect(storagePort.save).toHaveBeenCalledWith(
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{4}-\d{2}-\d{2}/),
+      // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
       expect.stringMatching(/\d{2}:\d{2}:\d{2}/),
       0.998,
     );

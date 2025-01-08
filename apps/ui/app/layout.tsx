@@ -18,10 +18,11 @@ export const metadata: Metadata = {
   title: "Energy Usage",
 };
 
+// biome-ignore lint/style/noDefaultExport: required for Next.js
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>): ReactNode {
   return (
     <html lang="en">
@@ -31,8 +32,8 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          enableSystem={true}
+          disableTransitionOnChange={true}
         >
           {children}
         </ThemeProvider>

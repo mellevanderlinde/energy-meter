@@ -3,7 +3,7 @@
     "ci": "turbo build lint test docker",
     "dev": "turbo dev --env-mode=loose",
     "docker": "docker compose build",
-    "lint": "biome check",
+    "lint": "biome check --error-on-warnings",
     "test:update": "turbo test:update"
   },
   "devDependencies": {

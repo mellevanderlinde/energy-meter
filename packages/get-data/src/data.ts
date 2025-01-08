@@ -14,7 +14,6 @@ export async function getData(numberOfDays: number): Promise<GetDataOutput> {
   const dates = getDates(numberOfDays);
 
   if (process.env.MOCK_DATA === "true") {
-    console.log("Using mock data");
     return getMockData(numberOfDays, data);
   }
 

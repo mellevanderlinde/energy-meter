@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
+// biome-ignore lint/style/noDefaultExport: required
 export default {
   darkMode: ["class"],
   content: [

@@ -31,7 +31,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function Component(): ReactNode {
+export function Chart(): ReactNode {
   const [numberOfDays, setNumberOfDays] = useState("14");
   const [data, setData] = useState<GetDataOutput>([]);
 
@@ -88,7 +88,7 @@ export default function Component(): ReactNode {
           className="aspect-auto h-[500px] w-[1200px]"
         >
           <BarChart
-            accessibilityLayer
+            accessibilityLayer={true}
             data={sumPerDay}
             margin={{
               left: 12,

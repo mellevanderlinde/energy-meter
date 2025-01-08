@@ -10,7 +10,7 @@ export class DynamodbAdapter implements StoragePort {
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
-    if (!accessKeyId || !secretAccessKey) {
+    if (!(accessKeyId && secretAccessKey)) {
       throw new Error("AWS credentials are missing");
     }
 

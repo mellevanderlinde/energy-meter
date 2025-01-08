@@ -1,18 +1,7 @@
-import { beforeAll, describe, expect, it, vi } from "vitest";
-import { SerialPortAdapter } from "./serial-port-adapter";
+import { describe, expect, it } from "vitest";
+import { regex } from "./serial-port-adapter";
 
 describe("SerialPortAdapter", () => {
-  let adapter: SerialPortAdapter;
-  let regex: RegExp;
-
-  beforeAll(() => {
-    adapter = new SerialPortAdapter("/dev/ttyUSBMock", {
-      pipe: vi.fn(),
-    } as never);
-    // biome-ignore lint/complexity/useLiteralKeys: property is private
-    regex = adapter["regex"];
-  });
-
   it("should get kwh values from regex", () => {
     let result = regex.exec("1-0:1.8.1(00.456*kWh)");
     expect(result?.slice(0, 3)).toEqual([

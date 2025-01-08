@@ -3,7 +3,9 @@ import { getDateTime, timeToSave } from "./datetime";
 
 it("should return the current date and time", () => {
   const result = getDateTime();
+  // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
   expect(result.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  // biome-ignore lint/performance/useTopLevelRegex: not needed for tests
   expect(result.time).toMatch(/^\d{2}:\d{2}:\d{2}$/);
 });
 
