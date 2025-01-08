@@ -148,7 +148,7 @@ const ChartTooltipContent = forwardRef<
         return null;
       }
 
-      const [item] = payload;
+      const [item] = payload || [];
       const key = `${labelKey || item.dataKey || item.name || "value"}`;
       const itemConfig = getPayloadConfigFromPayload(config, item, key);
       const value =
@@ -159,7 +159,7 @@ const ChartTooltipContent = forwardRef<
       if (labelFormatter) {
         return (
           <div className={cn("font-medium", labelClassName)}>
-            {labelFormatter(value, payload)}
+            {labelFormatter(value, payload || [])}
           </div>
         );
       }
@@ -296,7 +296,7 @@ const ChartLegendContent = forwardRef<
           className,
         )}
       >
-        {payload.map((item) => {
+        {payload?.map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
