@@ -1,56 +1,38 @@
-import { describe, expect, it } from "vitest";
-import { regex } from "./serial-port-adapter";
+import { MockBinding } from "@serialport/binding-mock";
+import { SerialPort } from "serialport";
+import { type Mock, beforeEach, describe, expect, it, vi } from "vitest";
+import { SerialPortAdapter } from "./serial-port-adapter";
 
 describe("SerialPortAdapter", () => {
-  it("should get kwh values from regex", () => {
-    let result = regex.exec("1-0:1.8.1(00.456*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.1(00.456*kWh)",
-      "1",
-      "00.456",
-    ]);
+  let adapter: SerialPortAdapter;
+  let port: SerialPort;
+  let handler: Mock;
 
-    result = regex.exec("1-0:1.8.1(02.340*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.1(02.340*kWh)",
-      "1",
-      "02.340",
-    ]);
-
-    result = regex.exec("1-0:1.8.1(0123.987*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.1(0123.987*kWh)",
-      "1",
-      "0123.987",
-    ]);
-
-    result = regex.exec("1-0:1.8.2(09012.345*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.2(09012.345*kWh)",
-      "2",
-      "09012.345",
-    ]);
-
-    result = regex.exec("1-0:1.8.2(01.234*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.2(01.234*kWh)",
-      "2",
-      "01.234",
-    ]);
-
-    result = regex.exec("1-0:1.8.2(00.000*kWh)");
-    expect(result?.slice(0, 3)).toEqual([
-      "1-0:1.8.2(00.000*kWh)",
-      "2",
-      "00.000",
-    ]);
+  beforeEach(() => {
+    MockBinding.createPort("/dev/mock");
+    port = new SerialPort({
+      path: "/dev/mock",
+      baudRate: 115200,
+      binding: MockBinding,
+    });
+    handler = vi.fn();
+    adapter = new SerialPortAdapter("/dev/mock", port);
+    adapter.onDataReceived(handler);
   });
 
-  it("should not get kwh values from regex", () => {
-    let result = regex.exec("1-0:31.7.0(012*A)");
-    expect(result).toBeNull();
+  it("should call handler with kwh1 value", () => {
+    port.emit("data", "1-0:1.8.1(00.123*kWh)\n");
+    expect(handler).toHaveBeenNthCalledWith(1, "00.123", "kwh1");
+  });
 
-    result = regex.exec("KAIFA");
-    expect(result).toBeNull();
+  it("should call handler with kwh2 value", () => {
+    port.emit("data", "1-0:1.8.2(10.000*kWh)\n");
+    expect(handler).toHaveBeenNthCalledWith(1, "10.000", "kwh2");
+  });
+
+  it("should not call handler", () => {
+    port.emit("data", "1-0:31.7.0(012*A)\n");
+    port.emit("data", "KAIFA\n");
+    expect(handler).not.toHaveBeenCalled();
   });
 });
