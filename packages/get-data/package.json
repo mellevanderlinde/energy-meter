@@ -5,8 +5,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.724.0",
-    "@aws-sdk/util-dynamodb": "^3.724.0"
+    "@aws-sdk/client-dynamodb": "^3.726.1",
+    "@aws-sdk/util-dynamodb": "^3.726.1"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
