@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "ci": "turbo build lint test docker",
+    "ci": "turbo build lint test docker:build docker:scan",
     "dev": "turbo dev --env-mode=loose",
-    "docker": "docker compose build",
+    "docker:build": "docker compose build",
+    "docker:scan": "docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image --exit-code 1 energy-meter:latest",
     "lint": "biome check --error-on-warnings",
     "test:update": "turbo test:update"
   },
