@@ -3,6 +3,8 @@
   "ui": "tui",
   "tasks": {
     "build": {},
+    "cdk:deploy": {},
+    "cdk:diff": {},
     "dev": {
       "cache": false,
       "persistent": true

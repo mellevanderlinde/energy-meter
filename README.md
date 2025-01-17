@@ -10,8 +10,7 @@ Run this on your desktop device (i.e., not on the Raspberry Pi).
 
 ```
 pnpm install
-cd apps/infra
-npx cdk deploy -c email=you@example.com
+pnpm run cdk:deploy -- -c email=you@example.com
 ```
 
 Go to the created [IAM user](https://us-east-1.console.aws.amazon.com/iam/home?region=eu-west-1#/users/details/energy-meter?section=security_credentials), click "Create access key" and follow the steps in the console. Temporarily store the access key and secret access key. 
