@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".turbo", ".next", "apps/meter/src/**/*.js"]
+    "ignore": [".turbo", ".next", "apps/meter/src/**/*.js", "cdk.out"]
   },
   "formatter": {
     "enabled": true,
