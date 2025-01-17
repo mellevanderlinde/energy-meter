@@ -7,7 +7,8 @@
       "cache": false,
       "persistent": true
     },
-    "//#docker": {},
+    "//#docker:build": {},
+    "//#docker:scan": { "dependsOn": ["//#docker:build"] },
     "//#lint": {},
     "test": {},
     "test:update": {}
