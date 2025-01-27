@@ -4,7 +4,7 @@
     "energy-meter": "bin/energy-meter.js"
   },
   "scripts": {
-    "build": "tsc --noEmit",
+    "build": "tsc",
     "cdk:deploy": "cdk deploy",
     "cdk:diff": "cdk diff",
     "test": "vitest run",
