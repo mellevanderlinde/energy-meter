@@ -1,4 +1,3 @@
-#!/opt/homebrew/opt/node/bin/node
 import { App } from "aws-cdk-lib";
 import { EnergyMeterStack } from "../lib/energy-meter-stack";
 

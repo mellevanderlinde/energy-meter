@@ -7,12 +7,12 @@ import { Topic } from "aws-cdk-lib/aws-sns";
 import { EmailSubscription } from "aws-cdk-lib/aws-sns-subscriptions";
 import type { Construct } from "constructs";
 
-interface EnergyMeterStackProps extends StackProps {
-  email: string;
-}
-
 export class EnergyMeterStack extends Stack {
-  constructor(scope: Construct, id: string, props: EnergyMeterStackProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props: StackProps & { email: string },
+  ) {
     super(scope, id, props);
 
     const appName = "energy-meter";
