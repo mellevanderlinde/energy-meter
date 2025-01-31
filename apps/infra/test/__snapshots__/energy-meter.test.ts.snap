@@ -39,6 +39,16 @@ exports[`should match with snapshot 1`] = `
     },
     "TableCD117FA1": {
       "DeletionPolicy": "Delete",
+      "Metadata": {
+        "cdk_nag": {
+          "rules_to_suppress": [
+            {
+              "id": "AwsSolutions-DDB3",
+              "reason": "This table does not require point-in-time recovery",
+            },
+          ],
+        },
+      },
       "Properties": {
         "AttributeDefinitions": [
           {
@@ -71,6 +81,37 @@ exports[`should match with snapshot 1`] = `
         "TopicName": "energy-meter",
       },
       "Type": "AWS::SNS::Topic",
+    },
+    "TopicPolicyA1747468": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "SNS:Publish",
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": {
+                "AWS": "*",
+              },
+              "Resource": {
+                "Ref": "TopicBFC7AF6E",
+              },
+              "Sid": "AllowPublishThroughSSLOnly",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Topics": [
+          {
+            "Ref": "TopicBFC7AF6E",
+          },
+        ],
+      },
+      "Type": "AWS::SNS::TopicPolicy",
     },
     "Topictestexamplecom07E55C1F": {
       "Properties": {

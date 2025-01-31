@@ -2,9 +2,15 @@ import { Duration, RemovalPolicy, Stack, type StackProps } from "aws-cdk-lib";
 import { ComparisonOperator } from "aws-cdk-lib/aws-cloudwatch";
 import { SnsAction } from "aws-cdk-lib/aws-cloudwatch-actions";
 import { AttributeType, BillingMode, Table } from "aws-cdk-lib/aws-dynamodb";
-import { PolicyStatement, User } from "aws-cdk-lib/aws-iam";
+import {
+  AnyPrincipal,
+  Effect,
+  PolicyStatement,
+  User,
+} from "aws-cdk-lib/aws-iam";
 import { Topic } from "aws-cdk-lib/aws-sns";
 import { EmailSubscription } from "aws-cdk-lib/aws-sns-subscriptions";
+import { NagSuppressions } from "cdk-nag";
 import type { Construct } from "constructs";
 
 export class EnergyMeterStack extends Stack {
@@ -33,6 +39,13 @@ export class EnergyMeterStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
+    NagSuppressions.addResourceSuppressions(table, [
+      {
+        id: "AwsSolutions-DDB3",
+        reason: "This table does not require point-in-time recovery",
+      },
+    ]);
+
     user.addToPolicy(
       new PolicyStatement({
         actions: ["dynamodb:PutItem"],
@@ -42,8 +55,22 @@ export class EnergyMeterStack extends Stack {
 
     const topic = new Topic(this, "Topic", {
       topicName: appName,
-      enforceSSL: true,
     });
+
+    topic.addToResourcePolicy(
+      new PolicyStatement({
+        sid: "AllowPublishThroughSSLOnly",
+        actions: ["SNS:Publish"],
+        effect: Effect.DENY,
+        resources: [topic.topicArn],
+        conditions: {
+          Bool: {
+            "aws:SecureTransport": "false",
+          },
+        },
+        principals: [new AnyPrincipal()],
+      }),
+    );
 
     topic.addSubscription(new EmailSubscription(props.email));
 
