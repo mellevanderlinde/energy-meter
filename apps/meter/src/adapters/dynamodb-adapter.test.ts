@@ -23,6 +23,7 @@ it("should save an item", () => {
 
   adapter.save("2025-01-01", "12:00", 1.23);
 
+  expect(client.send).toHaveBeenCalledTimes(1);
   expect(client.send).toHaveBeenCalledWith(
     expect.objectContaining({
       input: {
