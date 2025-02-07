@@ -5,11 +5,11 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.738.0",
-    "@aws-sdk/util-dynamodb": "^3.738.0"
+    "@aws-sdk/client-dynamodb": "^3.743.0",
+    "@aws-sdk/util-dynamodb": "^3.743.0"
   },
   "devDependencies": {
     "typescript": "^5.7.3",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.5"
   }
 }
